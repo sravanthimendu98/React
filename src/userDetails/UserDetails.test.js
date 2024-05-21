@@ -27,5 +27,6 @@ test('calls handleFetchDetails when "Get users" button is clicked', () => {
   );
   const getUsersButton = screen.getByText('Get users');
   fireEvent.click(getUsersButton);
+  
 });
 
