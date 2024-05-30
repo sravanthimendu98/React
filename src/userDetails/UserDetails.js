@@ -5,6 +5,8 @@ import { getUsersFetch, deleteUsers, updateUser } from '../actions';
 import { Button, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import '../App.css';
+import Navbar from '../navbar/Navbar';
+
 
 
 const columns = [
@@ -55,6 +57,8 @@ const UserDetails = () => {
   }
 
   return (
+    <>
+    <Navbar/>
     <div className="App">
       <Button
         variant='contained'
@@ -147,6 +151,7 @@ const UserDetails = () => {
         </div>
       )}
     </div>
+    </>
   );
 }
 

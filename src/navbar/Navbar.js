@@ -72,19 +72,13 @@ const ResponsiveAppBar = () => {
                         LOGO
                     </Typography>
                     <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'end' }}>
-                        <Stack>
-                            <Link to="/login" style={{color:'#fff'}}>Login</Link>
-                        </Stack>
-                        <Stack ml={3} mr={3}>
-                            <Link to="/register" style={{color:'#fff'}}>Register</Link>
-                        </Stack>
-                    </Box>
-                    <Box>
-                    <Stack ml={3} mr={3}>
+                        
                             <Link to="/register" style={{color:'#fff'}} onClick={handleLogout}>Logout</Link>
-                        </Stack>
                     </Box>
-
+                    {/* <Box>
+                    <Stack ml={3} mr={3}>
+                        </Stack>
+                    </Box> */}
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
