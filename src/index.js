@@ -4,14 +4,21 @@ import './index.css';
 import App from './App';
 import { Provider } from "react-redux";
 import reportWebVitals from './reportWebVitals';
-import { combineReducers, createStore, applyMiddleware } from 'redux';
+import { configureStore } from '@reduxjs/toolkit';
 import myFirstReducer from './reducer';
 import mySaga from './sagas';
-import createSagaMiddleware from 'redux-saga'
+import createSagaMiddleware from 'redux-saga';
 
 const sagaMiddleware = createSagaMiddleware();
-const rootReducer = combineReducers({ myFirstReducer });
-const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
+const store = configureStore({
+  reducer: {
+    myFirstReducer
+  },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware({ thunk: false }).concat(sagaMiddleware)
+});
+
 sagaMiddleware.run(mySaga);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

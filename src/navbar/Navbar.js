@@ -2,31 +2,31 @@ import * as React from 'react';
 import {
     AppBar, Box, Toolbar, IconButton, Typography, Menu, Container, Avatar, Button,
     Tooltip, MenuItem,
+    Stack,
 } from '@mui/material';
-import MenuIcon from '@mui/icons-material/Menu';
 import AdbIcon from '@mui/icons-material/Adb';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
-const pages = ['Home', 'Settings', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+
+const settings = ['Logout'];
 
 const ResponsiveAppBar = () => {
+    const navigate = useNavigate();
     const [anchorElNav, setAnchorElNav] = React.useState(null);
     const [anchorElUser, setAnchorElUser] = React.useState(null);
-
-    const handleOpenNavMenu = (event) => {
-        setAnchorElNav(event.currentTarget);
-    };
 
     const handleOpenUserMenu = (event) => {
         setAnchorElUser(event.currentTarget);
     };
 
-    const handleCloseNavMenu = () => {
-        setAnchorElNav(null);
-    };
     const handleCloseUserMenu = () => {
         setAnchorElUser(null);
     };
+
+    const handleLogout = () => {
+        navigate('/register')
+    }
 
     return (
         <AppBar position="static">
@@ -51,42 +51,7 @@ const ResponsiveAppBar = () => {
                         LOGO
                     </Typography>
 
-                    <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-                        <IconButton
-                            size="large"
-                            aria-label="account of current user"
-                            aria-controls="menu-appbar"
-                            aria-haspopup="true"
-                            onClick={handleOpenNavMenu}
-                            color="inherit"
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <Menu
-                            id="menu-appbar"
-                            anchorEl={anchorElNav}
-                            anchorOrigin={{
-                                vertical: 'bottom',
-                                horizontal: 'left',
-                            }}
-                            keepMounted
-                            transformOrigin={{
-                                vertical: 'top',
-                                horizontal: 'left',
-                            }}
-                            open={Boolean(anchorElNav)}
-                            onClose={handleCloseNavMenu}
-                            sx={{
-                                display: { xs: 'block', md: 'none' },
-                            }}
-                        >
-                            {pages.map((page) => (
-                                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                                    <Typography textAlign="center">{page}</Typography>
-                                </MenuItem>
-                            ))}
-                        </Menu>
-                    </Box>
+
                     <AdbIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
                     <Typography
                         variant="h5"
@@ -106,22 +71,25 @@ const ResponsiveAppBar = () => {
                     >
                         LOGO
                     </Typography>
-                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-                        {pages.map((page) => (
-                            <Button
-                                key={page}
-                                onClick={handleCloseNavMenu}
-                                sx={{ my: 2, color: 'white', display: 'block' }}
-                            >
-                                {page}
-                            </Button>
-                        ))}
+                    <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, justifyContent:'end' }}>
+                        <Stack>
+                            <Link to="/login" style={{color:'#fff'}}>Login</Link>
+                        </Stack>
+                        <Stack ml={3} mr={3}>
+                            <Link to="/register" style={{color:'#fff'}}>Register</Link>
+                        </Stack>
+                    </Box>
+                    <Box>
+                    <Stack ml={3} mr={3}>
+                            <Link to="/register" style={{color:'#fff'}} onClick={handleLogout}>Logout</Link>
+                        </Stack>
                     </Box>
 
                     <Box sx={{ flexGrow: 0 }}>
                         <Tooltip title="Open settings">
                             <IconButton onClick={handleOpenUserMenu} sx={{ p: 0 }}>
                                 <Avatar alt="" src="/static/images/avatar/2.jpg" />
+                                <span>{}</span>
                             </IconButton>
                         </Tooltip>
                         <Menu
@@ -142,7 +110,7 @@ const ResponsiveAppBar = () => {
                         >
                             {settings.map((setting) => (
                                 <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                                    <Typography textAlign="center">{setting}</Typography>
+                                    <Typography textAlign="center" onClick={handleLogout}>{setting}</Typography>
                                 </MenuItem>
                             ))}
                         </Menu>

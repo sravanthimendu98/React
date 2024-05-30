@@ -1,0 +1,30 @@
+{
+  "users": [
+    {
+      "id": "6921",
+      "email": "abcd@gmail.com",
+      "password": "123",
+      "name": "sravanthi 123",
+      "phone": "111",
+      "website": "sample"
+    },
+    {
+      "id": "e885",
+      "email": "abc@gmail.com",
+      "password": "abc"
+    },
+    {
+      "id": "a50e",
+      "name": "sravanthi",
+      "email": "sravanthi.mendu@gmail.com",
+      "password": "123"
+    },
+    {
+      "id": "1bf2",
+      "name": "mendu",
+      "email": "abc@gmail.com",
+      "password": "123",
+      "phone": "113"
+    }
+  ]
+}

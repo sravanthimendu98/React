@@ -6,6 +6,7 @@ import { Button, TextField } from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
 import '../App.css';
 
+
 const columns = [
   { field: 'id', headerName: 'ID', width: 90 },
   { field: 'name', headerName: 'Name', width: 200 },
@@ -21,12 +22,14 @@ const UserDetails = () => {
   const [selectionModel, setSelectionModel] = useState([]);
   const [editingUser, setEditingUser] = useState(null);
 
+  console.log(users,'users');
+
   useEffect(() => {
     setUserDetails(users);
   }, [users]);
 
   const handleDelete = () => {
-    dispatch(deleteUsers(selectionModel));
+    dispatch(deleteUsers(selectionModel[0]));
   };
 
   const handleEdit = () => {

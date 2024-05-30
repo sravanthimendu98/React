@@ -1,4 +1,3 @@
-// reducer.js
 import { GET_USERS_SUCCESS, DELETE_USERS, UPDATE_USER } from "./actions";
 
 const myFirstReducer = (state = { users: [] }, action) => {
